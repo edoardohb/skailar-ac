@@ -8,11 +8,11 @@ const footerNavs = [
     label: "Community",
     items: [
       {
-        href: "https://docs.napse.ac/",
+        href: "https://docs.skailar.ac/",
         name: "Docs"
       },
       {
-        href: "https://discord.gg/napse",
+        href: "https://discord.gg/skailar",
         name: "Discord",
       },
     ],
@@ -30,7 +30,7 @@ const footerNavs = [
 
 const footerSocials = [
   {
-    href: "https://discord.gg/napse",
+    href: "https://discord.gg/skailar",
     name: "Discord",
     icon: <FaDiscord className="h-4 w-4" />,
   },
@@ -45,19 +45,19 @@ export function SiteFooter() {
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo.png"
-                alt="Napse"
+                alt="Skailar"
                 width={40}
                 height={40}
                 className="h-10 w-10 text-primary"
               />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap text-napse">
-                Napse
+              <span className="self-center text-2xl font-semibold whitespace-nowrap text-skailar">
+                Skailar
               </span>
             </Link>
             <p className="max-w-xs text-muted-foreground">
               Developed by{' '}
-              <Link href="/" target="_blank" className="bg-gradient-to-r from-purple-300 to-napse bg-clip-text text-transparent">
-                Napse Team
+              <Link href="/" target="_blank" className="bg-gradient-to-r from-purple-300 to-skailar bg-clip-text text-transparent">
+                Skailar Team
               </Link>
             </p>
           </div>
@@ -100,8 +100,8 @@ export function SiteFooter() {
           </div>
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
             &copy;{new Date().getFullYear()}{" "}
-            <Link href="/" className="cursor-pointer hover:text-napse duration-1000">
-              Napse
+            <Link href="/" className="cursor-pointer hover:text-skailar duration-1000">
+              Skailar
             </Link>
             . All Rights Reserved.
           </span>

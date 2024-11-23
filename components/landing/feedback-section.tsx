@@ -43,21 +43,21 @@ export function FeedbackSection() {
     <div id="feedbacks" className="mt-48 relative">
       <div className="container w-full flex flex-col items-center justify-center">
         <div>
-          <div className="flex items-center gap-2 bg-napse/15 rounded-md p-2">
-            <p className="text-sm text-napse font-medium">Customer Feedbacks</p>
+          <div className="flex items-center gap-2 bg-skailar/15 rounded-md p-2">
+            <p className="text-sm text-skailar font-medium">Customer Feedbacks</p>
           </div>
         </div>
 
         <h2 className="mt-4 mb-2 text-5xl font-bold tracking-tight text-black dark:text-white sm:text-6xl text-center">
           What Our{' '}
-          <span className="bg-gradient-to-r from-purple-300 to-napse bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-purple-300 to-skailar bg-clip-text text-transparent">
             Customers
           </span>{' '}
           Are Saying
         </h2>
 
         <p className="text-center text-muted-foreground text-lg mt-2 font-medium max-w-xl mx-auto">
-          Hear directly from our users about their experience with Napse, before and after using our solution.
+          Hear directly from our users about their experience with Skailar, before and after using our solution.
         </p>
 
         <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background md:shadow-xl">

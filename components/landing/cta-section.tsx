@@ -47,12 +47,12 @@ export const CTASection = () => {
     <section className="py-20 md:py-24" ref={sectionRef}>
       <div className="container">
         <motion.div ref={borderedDivRef} className="border border-white/15 py-24 rounded-xl overflow-hidden relative group" animate={{ backgroundPositionX: starsBg.width }} transition={{ repeat: Infinity, duration: 60, ease: "linear" }} style={{ backgroundPositionY, backgroundImage: `url(${starsBg.src})` }}>
-          <motion.div className="absolute inset-0 bg-napse bg-blend-overlay opacity-0 group-hover:opacity-100 transition duration-700" style={{ maskImage, backgroundImage: `url(${gridLines.src})` }} />
+          <motion.div className="absolute inset-0 bg-skailar bg-blend-overlay opacity-0 group-hover:opacity-100 transition duration-700" style={{ maskImage, backgroundImage: `url(${gridLines.src})` }} />
           <div className="relative">
             <h2 className="text-5xl md:text-6xl max-w-sm mx-auto tracking-tighter text-center font-medium">Join our Community</h2>
             <p className="text-center text-lg md:text-xl max-w-xs mx-auto text-white/70 px-4 mt-5 tracking-tight">Join our community to get the latest news, updates, and exclusive</p>
             <div className="flex justify-center mt-8">
-              <Link className={buttonVariants({ variant: "outline" })} target="_blank" href="https://discord.gg/napse">Join Discord</Link>
+              <Link className={buttonVariants({ variant: "outline" })} target="_blank" href="https://discord.gg/skailar">Join Discord</Link>
             </div>
           </div>
         </motion.div>

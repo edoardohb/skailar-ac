@@ -62,10 +62,10 @@ const PlanCard: React.FC<{ plan: (typeof pricingPlans)[number] }> = ({
   plan,
 }) => (
   <Card
-    className={`flex flex-col ${plan.popular ? "border-2 border-napse" : ""}`}
+    className={`flex flex-col ${plan.popular ? "border-2 border-skailar" : ""}`}
   >
     <CardHeader>
-      <CardTitle className={plan.popular ? "text-napse" : ""}>{plan.title}</CardTitle>
+      <CardTitle className={plan.popular ? "text-skailar" : ""}>{plan.title}</CardTitle>
       <CardDescription>{plan.description}</CardDescription>
     </CardHeader>
     <CardContent className="flex-grow">
@@ -84,7 +84,7 @@ const PlanCard: React.FC<{ plan: (typeof pricingPlans)[number] }> = ({
       </ul>
     </CardContent>
     <CardFooter className="mt-auto">
-      <Button variant="napse" className="w-full">Buy Now</Button>
+      <Button variant="skailar" className="w-full">Buy Now</Button>
     </CardFooter>
   </Card>
 );
@@ -94,14 +94,14 @@ export function PricingSection() {
     <div id="pricing" className="mt-48 relative">
       <div className="container max-w-screen-xl w-full flex flex-col items-center justify-center">
         <div>
-          <div className="flex items-center gap-2 bg-napse/15 rounded-md p-2">
-            <p className="text-sm text-napse font-medium">Pricing</p>
+          <div className="flex items-center gap-2 bg-skailar/15 rounded-md p-2">
+            <p className="text-sm text-skailar font-medium">Pricing</p>
           </div>
         </div>
 
         <h2 className="mt-4 mb-2 text-5xl font-bold tracking-tight text-black dark:text-white sm:text-6xl text-center">
           Simple{' '}
-          <span className="bg-gradient-to-r from-purple-300 to-napse bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-purple-300 to-skailar bg-clip-text text-transparent">
             pricing
           </span>{' '}
           for everyone.

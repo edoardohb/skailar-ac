@@ -9,8 +9,8 @@ import { UserAuthForm } from "@/components/user-auth-form"
 import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
-  title: "Login | Napse",
-  description: "Login to your Napse account for ScreenShare FiveM",
+  title: "Login | Skailar",
+  description: "Login to your Skailar account for ScreenShare FiveM",
 }
 
 export default function LoginPage() {
@@ -30,13 +30,13 @@ export default function LoginPage() {
         <CardHeader className="space-y-1">
           <div className="flex justify-center">
             <Link href="/">
-              <Image src='/logo.png' alt="Napse" width={80} height={80} className="mb-2" />
+              <Image src='/logo.png' alt="Skailar" width={80} height={80} className="mb-2" />
             </Link>
           </div>
           <CardTitle className="text-2xl font-bold text-center">
             Welcome to{' '}
-            <span className="bg-gradient-to-r from-purple-400 to-napse bg-clip-text text-transparent">
-              Napse
+            <span className="bg-gradient-to-r from-purple-400 to-skailar bg-clip-text text-transparent">
+              Skailar
             </span>
           </CardTitle>
           <CardDescription className="text-center text-sm text-muted-foreground">

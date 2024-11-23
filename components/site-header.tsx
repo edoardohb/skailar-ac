@@ -103,9 +103,10 @@ export function SiteHeader() {
           <Link className="text-md flex items-center" href="/">
             <Image
               src="/logo.png"
-              alt="Napse"
+              alt="Skailar"
               width={80}
               height={80}
+              className="object-contain w-12 h-12"
             />
           </Link>
 
@@ -114,7 +115,7 @@ export function SiteHeader() {
               {menuItem.map((item) => (
                 <li key={item.id}>
                   <Link
-                    className="hover:text-napse text-xl transition-[color,transform] duration-300 md:text-sm md:transition-colors"
+                    className="hover:text-skailar text-xl transition-[color,transform] duration-300 md:text-sm md:transition-colors"
                     href={item.href}
                   >
                     {item.label}
@@ -125,7 +126,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="ml-auto flex h-full items-center">
-            <Link className={buttonVariants({ variant: "napse" })} href="/login">
+            <Link className={buttonVariants({ variant: "skailar" })} href="/login">
               Log in
             </Link>
           </div>
@@ -153,7 +154,7 @@ export function SiteHeader() {
         >
           <div className="container flex h-[3.5rem] items-center justify-between">
             <Link className="text-md flex items-center" href="/">
-              Napse
+              Skailar
             </Link>
 
             <button

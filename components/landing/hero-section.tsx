@@ -34,15 +34,15 @@ export default function HeroSection() {
           🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
           <span
             className={cn(
-              `inline animate-gradient bg-gradient-to-r from-purple-200 via-[#9c40ff] to-napse bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+              `inline animate-gradient bg-gradient-to-r from-purple-200 via-[#9c40ff] to-skailar bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
             )}
           >
-            Introducing Napse
+            Introducing Skailar
           </span>
           <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
         </AnimatedGradientText>
         <h1 className="bg-gradient-to-br dark:from-white/80 from-black from-30% dark:to-white/40 to-black/40 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent text-balance sm:text-6xl md:text-7xl lg:text-8xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
-          <SparklesText text="Napse Cheaters Detection" />
+          <SparklesText text="Skailar Cheaters Detection" />
         </h1>
         <p className="mb-12 text-lg tracking-tight text-gray-400 md:text-xl text-balance translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
           With the most powerful detections to keep your server and community

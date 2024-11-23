@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.napse.ac",
+        hostname: "cdn.skailar.ac",
         pathname: "**",
       }
     ]

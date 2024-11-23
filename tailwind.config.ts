@@ -23,7 +23,7 @@ const config = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       colors: {
-        napse: "hsl(277, 77%, 50%)",
+        skailar: "hsl(277, 77%, 50%)",
         discord: "hsl(227, 58%, 65%)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

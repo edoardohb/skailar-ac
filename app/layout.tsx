@@ -11,7 +11,7 @@ const monserratSans = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Napse",
+  title: "Skailar",
   description: "Revolutionize Cheaters Detection Like Never Before!",
 };
 
