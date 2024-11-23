@@ -104,6 +104,8 @@ const SparklesText: React.FC<SparklesTextProps> = ({
     return () => clearInterval(interval);
   }, [colors.first, colors.second]);
 
+  const words = text.split(" ");
+
   return (
     <div
       className={cn("text-6xl font-bold", className)}
@@ -119,9 +121,19 @@ const SparklesText: React.FC<SparklesTextProps> = ({
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />
         ))}
-        <span className="bg-gradient-to-br dark:from-white/80 from-black from-30% dark:to-white/40 to-black/40 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent text-balance sm:text-6xl md:text-7xl lg:text-8xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
-          {text}
-        </span>
+        {words.map((word, idx) => (
+          <span
+            key={idx}
+            className={cn(
+              "py-6 text-5xl font-medium leading-none tracking-tighter text-transparent text-balance sm:text-6xl md:text-7xl lg:text-8xl translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]",
+              word === "Napse"
+                ? "bg-gradient-to-br from-purple-300 to-napse from-30% bg-clip-text"
+                : "bg-gradient-to-br dark:from-white/80 from-black from-30% dark:to-white/40 to-black/40 bg-clip-text"
+            )}
+          >
+            {word}{" "}
+          </span>
+        ))}
       </span>
     </div>
   );
