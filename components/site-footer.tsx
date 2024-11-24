@@ -44,7 +44,7 @@ export function SiteFooter() {
           <div className="mb-12 flex-col flex gap-4">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/logo.png"
+                src="https://cdn.skailar.ac/v1/assets/img/logo.png"
                 alt="Skailar"
                 width={40}
                 height={40}

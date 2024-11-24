@@ -5,6 +5,7 @@ import Globe from "../magicui/globe";
 import GridPattern from "../magicui/grid-pattern";
 import Meteors from "../magicui/meteors";
 import { Calendar } from "../ui/calendar";
+import Image from "next/image";
 
 
 export default function FeatureSection() {
@@ -59,7 +60,7 @@ export default function FeatureSection() {
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
       background: (
         <div className="hidden sm:block transition-all duration-300 opacity-60 group-hover:opacity-100">
-          <img src="/security.png" className="absolute w-full top-7 -right-28 opacity-60" />
+          <Image fill alt="Security" src="https://cdn.skailar.ac/v1/assets/background/security.png" className="absolute w-full top-7 -right-28 opacity-60" />
         </div>
       ),
     },

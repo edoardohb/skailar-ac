@@ -9,6 +9,7 @@ import { useRef } from "react";
 import AnimatedGradientText from "../magicui/animated-gradient-text";
 import GridPattern from "../magicui/grid-pattern";
 import SparklesText from "../magicui/sparkles-text";
+import Image from "next/image";
 
 export default function HeroSection() {
   const ref = useRef(null);
@@ -68,14 +69,16 @@ export default function HeroSection() {
               colorTo="var(--color-two)"
             />
 
-            <img
-              src="/bg1.png"
+            <Image
+              src="https://cdn.skailar.ac/v1/assets/background/bg.png"
               alt="Hero Image"
+              fill
               className="hidden relative w-full h-full rounded-[inherit] border object-contain dark:block"
             />
-            <img
-              src="/bg1.png"
+            <Image
+              src="https://cdn.skailar.ac/v1/assets/background/bg.png"
               alt="Hero Image"
+              fill
               className="block relative w-full h-full  rounded-[inherit] border object-contain dark:hidden"
             />
           </div>

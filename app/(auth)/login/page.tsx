@@ -30,7 +30,7 @@ export default function LoginPage() {
         <CardHeader className="space-y-1">
           <div className="flex justify-center">
             <Link href="/">
-              <Image src='/logo.png' alt="Skailar" width={80} height={80} className="mb-2" />
+              <Image src='https://cdn.skailar.ac/v1/assets/img/logo.png' alt="Skailar" width={80} height={80} className="mb-2" />
             </Link>
           </div>
           <CardTitle className="text-2xl font-bold text-center">

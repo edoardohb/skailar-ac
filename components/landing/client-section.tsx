@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function ClientSection() {
   return (
     <section
@@ -12,20 +14,26 @@ export default function ClientSection() {
           <div className="mt-6">
             <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
               <li>
-                <img
-                  src={`/fiveguard.svg`}
+                <Image
+                  src={`https://cdn.skailar.ac/v1/assets/partners/fiveguard.svg`}
+                  alt="Fiveguard"
+                  fill
                   className="h-8"
                 />
               </li>
               <li>
-                <img
-                  src={`/santa.png`}
+                <Image
+                  src={`https://cdn.skailar.ac/v1/assets/partners/santa.png`}
+                  alt="Santa"
+                  fill
                   className="h-12 px-2"
                 />
               </li>
               <li>
-                <img
-                  src={`/rac.png`}
+                <Image
+                  src={`https://cdn.skailar.ac/v1/assets/partners/rac.png`}
+                  alt="RAC"
+                  fill
                   className="h-20 px-2"
                 />
               </li>

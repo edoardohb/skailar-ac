@@ -102,7 +102,7 @@ export function SiteHeader() {
         <div className="container flex h-[5rem] items-center justify-between">
           <Link className="text-md flex items-center" href="/">
             <Image
-              src="/logo.png"
+              src="https://cdn.skailar.ac/v1/assets/img/logo.png"
               alt="Skailar"
               width={80}
               height={80}
