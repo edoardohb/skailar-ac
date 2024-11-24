@@ -4,6 +4,7 @@ import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform } fr
 import Link from "next/link";
 import { RefObject, useEffect, useRef } from "react";
 import { buttonVariants } from "../ui/button";
+import { TextHoverEffect } from "../aceternity/text-hover-effect";
 
 const useRelativeMousePosition = (to: RefObject<HTMLElement>) => {
   const mouseX = useMotionValue(0)
@@ -44,19 +45,23 @@ export const CTASection = () => {
   const maskImage = useMotionTemplate`radial-gradient(20% 30% at ${mouseX}px ${mouseY}px, black, transparent)`
 
   return (
-    <section className="py-20 md:py-24" ref={sectionRef}>
-      <div className="container">
-        <motion.div ref={borderedDivRef} className="border border-white/15 py-24 rounded-xl overflow-hidden relative group" animate={{ backgroundPositionX: starsBg.width }} transition={{ repeat: Infinity, duration: 60, ease: "linear" }} style={{ backgroundPositionY, backgroundImage: `url(${starsBg.src})` }}>
-          <motion.div className="absolute inset-0 bg-skailar bg-blend-overlay opacity-0 group-hover:opacity-100 transition duration-700" style={{ maskImage, backgroundImage: `url(${gridLines.src})` }} />
-          <div className="relative">
-            <h2 className="text-5xl md:text-6xl max-w-sm mx-auto tracking-tighter text-center font-medium">Join our Community</h2>
-            <p className="text-center text-lg md:text-xl max-w-xs mx-auto text-white/70 px-4 mt-5 tracking-tight">Join our community to get the latest news, updates, and exclusive</p>
-            <div className="flex justify-center mt-8">
-              <Link className={buttonVariants({ variant: "outline" })} target="_blank" href="https://discord.gg/skailar">Join Discord</Link>
+    <>
+      <section className="py-20 md:py-24" ref={sectionRef}>
+        <div className="container">
+          <motion.div ref={borderedDivRef} className="border border-white/15 py-24 rounded-xl overflow-hidden relative group" animate={{ backgroundPositionX: starsBg.width }} transition={{ repeat: Infinity, duration: 60, ease: "linear" }} style={{ backgroundPositionY, backgroundImage: `url(${starsBg.src})` }}>
+            <motion.div className="absolute inset-0 bg-skailar bg-blend-overlay opacity-0 group-hover:opacity-100 transition duration-700" style={{ maskImage, backgroundImage: `url(${gridLines.src})` }} />
+            <div className="relative">
+              <h2 className="text-5xl md:text-6xl max-w-sm mx-auto tracking-tighter text-center font-medium">Join our Community</h2>
+              <p className="text-center text-lg md:text-xl max-w-xs mx-auto text-white/70 px-4 mt-5 tracking-tight">Join our community to get the latest news, updates, and exclusive</p>
+              <div className="flex justify-center mt-8">
+                <Link className={buttonVariants({ variant: "outline" })} target="_blank" href="https://discord.gg/skailar">Join Discord</Link>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+          </motion.div>
+        </div>
+      </section>
+
+      <TextHoverEffect text="SKAILAR" />
+    </>
   );
 };
