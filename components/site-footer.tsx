@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { FaDiscord } from "react-icons/fa6";
 import { TextHoverEffect } from "./aceternity/text-hover-effect";
+import { buttonVariants } from "./ui/button";
 
 const footerNavs = [
   {
@@ -58,11 +59,11 @@ export function SiteFooter() {
               </Link>
               <p className="max-w-xs text-muted-foreground">
                 Developed by{' '}
-                <Link href="https://discord.com/users/194131617629995010" target="_blank">
+                <Link className={buttonVariants({ variant: "footer_link" })} href="https://discord.com/users/194131617629995010" target="_blank">
                   Edo
                 </Link>{' '}
                 and{' '}
-                <Link href="https://discord.com/users/927923698927804466" target="_blank">
+                <Link className={buttonVariants({ variant: "footer_link" })} href="https://discord.com/users/927923698927804466" target="_blank">
                   Rugo
                 </Link>
               </p>

@@ -19,6 +19,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        footer_link: "text-skailar underline-offset-4 hover:underline !px-0 !text-lg",
         skailar: "gap-x-1.5 rounded-lg bg-skailar/15 px-4 py-[0.35rem] text-[15px] font-bold text-skailar outline-none transition-colors duration-300 hover:bg-skailar/25",
         discord: "gap-x-1.5 rounded-lg bg-discord/15 px-4 py-[0.35rem] text-[15px] font-bold text-discord outline-none transition-colors duration-300 hover:bg-discord/25",
       },
