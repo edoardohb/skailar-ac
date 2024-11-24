@@ -40,7 +40,7 @@ export default function Globe({
   className?: string;
   config?: COBEOptions;
 }) {
-  const phiRef = useRef(0);
+  let phi = 0;
   let width = 0;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef(null);
@@ -64,8 +64,8 @@ export default function Globe({
 
   const onRender = useCallback(
     (state: Record<string, any>) => {
-      if (!pointerInteracting.current) phiRef.current += 0.005;
-      state.phi = phiRef.current + r;
+      if (!pointerInteracting.current) phi += 0.005;
+      state.phi = phi + r;
       state.width = width * 2;
       state.height = width * 2;
     },
@@ -91,7 +91,7 @@ export default function Globe({
 
     setTimeout(() => (canvasRef.current!.style.opacity = "1"));
     return () => globe.destroy();
-  }, [config, onRender, onResize, width]);
+  }, []);
 
   return (
     <div
