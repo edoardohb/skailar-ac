@@ -56,8 +56,12 @@ export function SiteFooter() {
             </Link>
             <p className="max-w-xs text-muted-foreground">
               Developed by{' '}
-              <Link href="/" target="_blank" className="bg-gradient-to-r from-purple-300 to-skailar bg-clip-text text-transparent">
-                Skailar Team
+              <Link href="https://discord.com/users/194131617629995010" target="_blank">
+                Edo
+              </Link>{' '}
+              and{' '}
+              <Link href="https://discord.com/users/927923698927804466" target="_blank">
+                Rugo
               </Link>
             </p>
           </div>
