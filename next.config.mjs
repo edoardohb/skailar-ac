@@ -6,6 +6,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.skailar.ac",
         pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "avatar.vercel.sh",
+        pathname: "**",
       }
     ]
   }
