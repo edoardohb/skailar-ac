@@ -72,13 +72,15 @@ export default function HeroSection() {
             <Image
               src="https://cdn.skailar.ac/v1/assets/background/bg.png"
               alt="Hero Image"
-              fill
+              width={1057}
+              height={593}
               className="hidden relative w-full h-full rounded-[inherit] border object-contain dark:block"
             />
             <Image
               src="https://cdn.skailar.ac/v1/assets/background/bg.png"
               alt="Hero Image"
-              fill
+              width={1057}
+              height={593}
               className="block relative w-full h-full  rounded-[inherit] border object-contain dark:hidden"
             />
           </div>
