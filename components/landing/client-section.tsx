@@ -17,7 +17,8 @@ export default function ClientSection() {
                 <Image
                   src={`https://cdn.skailar.ac/v1/assets/partners/fiveguard.svg`}
                   alt="Fiveguard"
-                  fill
+                  width={64}
+                  height={32}
                   className="h-8"
                 />
               </li>
@@ -25,7 +26,8 @@ export default function ClientSection() {
                 <Image
                   src={`https://cdn.skailar.ac/v1/assets/partners/santa.png`}
                   alt="Santa"
-                  fill
+                  height={48}
+                  width={72}
                   className="h-12 px-2"
                 />
               </li>
@@ -33,7 +35,8 @@ export default function ClientSection() {
                 <Image
                   src={`https://cdn.skailar.ac/v1/assets/partners/rac.png`}
                   alt="RAC"
-                  fill
+                  height={80}
+                  width={120}
                   className="h-20 px-2"
                 />
               </li>
