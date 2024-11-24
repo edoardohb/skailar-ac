@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { UserAuthForm } from "@/components/user-auth-form"
 import { cn } from "@/lib/utils"
 import { auth } from "@/server/auth"
+import { redirect } from "next/navigation"
 
 export const metadata: Metadata = {
   title: "Login | Skailar",
@@ -17,7 +18,9 @@ export const metadata: Metadata = {
 export default async function LoginPage() {
   const session = await auth();
 
-  console.log(session);
+  if (session) {
+    redirect("/");
+  }
 
   return (
     <div className="container relative flex h-screen w-screen flex-col items-center justify-center">
