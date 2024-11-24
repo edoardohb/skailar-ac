@@ -7,13 +7,18 @@ import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { UserAuthForm } from "@/components/user-auth-form"
 import { cn } from "@/lib/utils"
+import { auth } from "@/server/auth"
 
 export const metadata: Metadata = {
   title: "Login | Skailar",
   description: "Login to your Skailar account for ScreenShare FiveM",
 }
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const session = await auth();
+
+  console.log(session);
+
   return (
     <div className="container relative flex h-screen w-screen flex-col items-center justify-center">
       <Link

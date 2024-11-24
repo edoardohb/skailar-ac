@@ -1,0 +1,106 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id             String    @id @db.VarChar(255)
+  name           String?   @db.VarChar(255)
+  email          String    @unique @db.VarChar(255)
+  emailVerified  DateTime? @db.DateTime
+  image          String?   @db.VarChar(255)
+  accounts       Account[]
+  sessions       Session[]
+  pins           Pin[]
+  authenticators Authenticator[]
+  paymentSessions PaymentSession[]
+}
+
+model Account {
+  userId           String    @db.VarChar(255)
+  type             String    @db.VarChar(255)
+  provider         String    @db.VarChar(255)
+  providerAccountId String   @db.VarChar(255)
+  refresh_token    String?   @db.Text
+  access_token     String?   @db.Text
+  expires_at       Int?      @db.Int
+  token_type       String?   @db.VarChar(255)
+  scope            String?   @db.VarChar(255)
+  id_token         String?   @db.Text
+  session_state    String?   @db.VarChar(255)
+
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String  @id @db.VarChar(255)
+  userId       String  @db.VarChar(255)
+  expires      DateTime @db.DateTime
+  user         User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String  @db.VarChar(255)
+  token      String  @db.VarChar(255)
+  expires    DateTime @db.DateTime
+
+  @@id([identifier, token])
+}
+
+model Authenticator {
+  credentialID         String  @db.VarChar(255)
+  userId               String  @db.VarChar(255)
+  providerAccountId    String  @db.VarChar(255)
+  credentialPublicKey  String  @db.Text
+  counter              Int     @db.Int
+  credentialDeviceType String  @db.VarChar(255)
+  credentialBackedUp   Boolean @default(false)
+  transports           String? @db.Text
+  user                 User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, credentialID])
+}
+
+model Pin {
+  id        String   @id @db.VarChar(255)
+  pin       String   @db.VarChar(255)
+  isUsed    Boolean  @default(false)
+  result    String   @default("None") @db.VarChar(255)
+  link      String   @db.VarChar(255)
+  userId    String   @db.VarChar(255)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  usedAt    DateTime? @db.Timestamp(0)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  results   Result[]
+}
+
+model Result {
+  id          String   @id @db.VarChar(255)
+  pinId       String   @db.VarChar(255)
+  date        DateTime @default(now()) @db.Timestamp(0)
+  systemInfo  Json     @db.Json
+  steam       Json     @db.Json
+  checks      Json     @db.Json
+  process     Json     @db.Json
+  timers      Json     @db.Json
+  prefetch    Json     @db.Json
+  bamExecuted Json     @db.Json
+  bamDeleted  Json     @db.Json
+  pin         Pin      @relation(fields: [pinId], references: [id], onDelete: Cascade)
+}
+
+model PaymentSession {
+  id        String   @id @db.VarChar(255)
+  sessionId String   @unique @db.VarChar(255)
+  priceId   String   @db.VarChar(255)
+  userId    String   @db.VarChar(255)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  status    String   @default("pending") @db.VarChar(255)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
