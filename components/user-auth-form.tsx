@@ -2,9 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import discordLogin from "@/server/actions/discord-login";
 import { Loader2 } from "lucide-react";
 import * as React from "react";
 import { FaDiscord } from "react-icons/fa6";
+import { toast } from "sonner";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -12,9 +14,16 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isDiscordLoading, setIsDiscordLoading] = React.useState<boolean>(false);
 
   async function onSignInDiscord() {
-    setIsDiscordLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsDiscordLoading(false);
+    try {
+      setIsDiscordLoading(true);
+      await discordLogin();
+    } catch (error) {
+      toast.error("Discord sign in failed", {
+        description: "Please try again.",
+      });
+    } finally {
+      setIsDiscordLoading(false);
+    }
   }
 
   return (
@@ -22,9 +31,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <Button
         variant="discord"
         type="button"
-        onClick={() => {
-          onSignInDiscord();
-        }}
+        onClick={onSignInDiscord}
         disabled={isDiscordLoading}
       >
         {isDiscordLoading ? (

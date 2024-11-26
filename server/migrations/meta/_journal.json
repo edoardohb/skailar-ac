@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1732630514553,
+      "tag": "0000_handy_lightspeed",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1732630569852,
+      "tag": "0001_late_franklin_storm",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1732631067414,
+      "tag": "0002_cold_warbird",
+      "breakpoints": true
+    }
+  ]
+}

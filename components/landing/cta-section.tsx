@@ -17,11 +17,11 @@ export const CTASection = () => {
             </form>
 
             <svg viewBox="0 0 1024 1024" aria-hidden="true" className="absolute shadow-lg top-[50%] -z-10 w-[64rem] h-[64rem]">
-              <circle r="512" cx="512" cy="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7"></circle>
+              <circle r="512" cx="512" cy="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fillOpacity="0.7"></circle>
               <defs>
                 <radialGradient r="1" cx="0" cy="0" id="759c1415-0410-454c-8f7c-9a820de03641" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(512)">
-                  <stop stop-color="#7775D6"></stop>
-                  <stop offset="1" stop-color="#961DE2" stop-opacity="0"></stop>
+                  <stop stopColor="#7775D6"></stop>
+                  <stop offset="1" stopColor="#961DE2" stopOpacity="0"></stop>
                 </radialGradient>
               </defs>
             </svg>
