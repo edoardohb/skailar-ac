@@ -1,67 +1,44 @@
-import gridLines from "@/assets/grid-lines.png";
-import starsBg from "@/assets/stars.png";
-import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform } from "framer-motion";
-import Link from "next/link";
-import { RefObject, useEffect, useRef } from "react";
-import { buttonVariants } from "../ui/button";
 import { TextHoverEffect } from "../aceternity/text-hover-effect";
-
-const useRelativeMousePosition = (to: RefObject<HTMLElement>) => {
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-
-  const updateMousePosition = (event: MouseEvent) => {
-    if (!to.current) return;
-    const { top, left } = to.current.getBoundingClientRect()
-
-    mouseX.set(event.x - left);
-    mouseY.set(event.y - top);
-  }
-
-  useEffect(() => {
-    window.addEventListener('mousemove', updateMousePosition);
-
-    return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
-    }
-  }, [updateMousePosition])
-
-  return [mouseX, mouseY]
-}
+import Particles from "../magicui/particles";
+import { buttonVariants } from "../ui/button";
 
 export const CTASection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const borderedDivRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start']
-  })
-
-  const backgroundPositionY = useTransform(scrollYProgress, [0, 1], [-300, 300])
-
-  const [mouseX, mouseY] = useRelativeMousePosition(borderedDivRef)
-
-  const maskImage = useMotionTemplate`radial-gradient(20% 30% at ${mouseX}px ${mouseY}px, black, transparent)`
-
   return (
     <>
-      <section className="py-20 md:py-24" ref={sectionRef}>
-        <div className="container">
-          <motion.div ref={borderedDivRef} className="border border-white/15 py-24 rounded-xl overflow-hidden relative group" animate={{ backgroundPositionX: starsBg.width }} transition={{ repeat: Infinity, duration: 60, ease: "linear" }} style={{ backgroundPositionY, backgroundImage: `url(${starsBg.src})` }}>
-            <motion.div className="absolute inset-0 bg-skailar bg-blend-overlay opacity-0 group-hover:opacity-100 transition duration-700" style={{ maskImage, backgroundImage: `url(${gridLines.src})` }} />
-            <div className="relative">
-              <h2 className="text-5xl md:text-6xl max-w-sm mx-auto tracking-tighter text-center font-medium">Join our Community</h2>
-              <p className="text-center text-lg md:text-xl max-w-xs mx-auto text-white/70 px-4 mt-5 tracking-tight">Join our community to get the latest news, updates, and exclusive</p>
-              <div className="flex justify-center mt-8">
-                <Link className={buttonVariants({ variant: "outline" })} target="_blank" href="https://discord.gg/skailar">Join Discord</Link>
-              </div>
-            </div>
-          </motion.div>
+      <div className="bg-black pt-[4rem] pb-[4rem] md:pt-[8rem] md:pb-[8rem]">
+        <div className="ml-auto mr-auto max-w-7xl pl-[1.5rem] pr-[1.5rem]">
+          <div className="relative isolate overflow-hidden bg-opacity-100 border border-white/15 py-24 px-[1.5rem] shadow-lg shadow-black/25 ring-0 ring-offset-0 rounded-2xl">
+            <h2 className="text-5xl md:text-6xl max-w-2xl mx-auto tracking-tighter text-center font-medium">Stay Updated on Our Launch</h2>
+            <p className="text-center text-lg md:text-xl max-w-lg mx-auto text-white/70 px-4 mt-5 tracking-tight">Sign up to receive the latest news and updates about our upcoming launch.</p>
+            <form className="ml-auto mr-auto mt-[2.5rem] flex max-w-md gap-4">
+              <label htmlFor="email-address" className="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0">Email address</label>
+              <input id="email-address" name="email" type="email" required placeholder="Enter your email" autoComplete="off" className="min-w-0 flex-1 rounded-sm border-0 bg-white/5 pl-3.5 pr-3.5 pt-2 pb-2 text-white shadow-sm ring-1 focus:ring-skailar ring-inset ring-skailar/10 text-sm leading-6" />
+              <button type="submit" className={buttonVariants({ variant: "skailar", size: "md" })}>Notify me</button>
+            </form>
+
+            <svg viewBox="0 0 1024 1024" aria-hidden="true" className="absolute shadow-lg top-[50%] -z-10 w-[64rem] h-[64rem]">
+              <circle r="512" cx="512" cy="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7"></circle>
+              <defs>
+                <radialGradient r="1" cx="0" cy="0" id="759c1415-0410-454c-8f7c-9a820de03641" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(512)">
+                  <stop stop-color="#7775D6"></stop>
+                  <stop offset="1" stop-color="#961DE2" stop-opacity="0"></stop>
+                </radialGradient>
+              </defs>
+            </svg>
+
+            <Particles
+              className="absolute inset-0 -z-10"
+              quantity={100}
+              ease={70}
+              size={0.30}
+              staticity={40}
+              color={"#ffffff"}
+            />
+          </div>
         </div>
-      </section>
+      </div>
 
       <TextHoverEffect text="SKAILAR" />
     </>
-  );
+  )
 };
