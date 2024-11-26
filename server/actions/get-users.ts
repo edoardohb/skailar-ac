@@ -19,3 +19,14 @@ export async function getUserByUsername(username: string) {
 
   return user;
 }
+
+export async function getUserById(id: string) {
+  const user = await db
+    .select()
+    .from(users)
+    .where(eq(users.id, id))
+    .limit(1)
+    .then((result) => result[0] || null);
+    
+  return user;
+}

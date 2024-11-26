@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FaDiscord } from "react-icons/fa6";
-import { TextHoverEffect } from "./aceternity/text-hover-effect";
 import { buttonVariants } from "./ui/button";
 
 const footerNavs = [
@@ -61,10 +60,13 @@ export function SiteFooter() {
                 Developed by{' '}
                 <Link className={buttonVariants({ variant: "footer_link" })} href="https://discord.com/users/194131617629995010" target="_blank">
                   Edo
-                </Link>{' '}
-                and{' '}
+                </Link>,{' '}
                 <Link className={buttonVariants({ variant: "footer_link" })} href="https://discord.com/users/927923698927804466" target="_blank">
                   Rugo
+                </Link>{' '}
+                &amp;{' '}
+                <Link className={buttonVariants({ variant: "footer_link" })} href="https://discord.com/users/504669379653533708" target="_blank">
+                  FxMoon
                 </Link>
               </p>
             </div>
