@@ -28,7 +28,7 @@ export const accounts = pgTable(
       .references(() => users.id, { onDelete: 'cascade' }),
     type: text('type').$type<AdapterAccount['type']>().notNull(),
     provider: text('provider').notNull(),
-    providerAccountId: text('providerAccountId').notNull(),
+    providerAccountId: text('providerAccountId').notNull().unique(),
     refresh_token: text('refresh_token'),
     access_token: text('access_token'),
     expires_at: integer('expires_at'),
@@ -93,7 +93,7 @@ export const pins = pgTable(
     link: text("link").notNull(),
     userId: text("userId")
       .notNull()
-      .references(() => users.discordId, { onDelete: "cascade" }),
+      .references(() => accounts.providerAccountId, { onDelete: "cascade" }),
     created_at: timestamp("created_at")
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),

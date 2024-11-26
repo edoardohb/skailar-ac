@@ -1,0 +1,1 @@
+ALTER TABLE "pin" DROP CONSTRAINT "pin_userId_unique";

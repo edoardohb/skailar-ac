@@ -1,0 +1,1 @@
+ALTER TABLE "pin" ADD CONSTRAINT "pin_userId_unique" UNIQUE("userId");
