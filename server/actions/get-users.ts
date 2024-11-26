@@ -1,7 +1,7 @@
 "use server"
 
 import { db } from "@/server";
-import { users } from "@/server/schema";
+import { accounts, users } from "@/server/schema";
 import { eq } from "drizzle-orm";
 
 export async function getAllUsers() {

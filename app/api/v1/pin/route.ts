@@ -1,5 +1,5 @@
 import { db } from "@/server";
-import { pins } from "@/server/schema";
+import { accounts, pins } from "@/server/schema";
 import crypto from "crypto";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
@@ -17,11 +17,23 @@ export async function POST(req: Request) {
     const { userId } = body;
 
     if (!userId) {
-      return NextResponse.json({ error: "userId is required" }, { status: 400 });
+      return NextResponse.json({ error: "userId is required." }, { status: 400 });
+    }
+
+    const accountExists = await db
+      .select()
+      .from(accounts)
+      .where(eq(accounts.providerAccountId, userId))
+      .limit(1);
+
+    if (accountExists.length === 0) {
+      return NextResponse.json(
+        { error: "User not registered on Skailar." },
+        { status: 404 }
+      );
     }
 
     const pin = generatePin();
-
     const link = `https://skailar.ac/pin/result/${pin}`;
 
     await db.insert(pins).values({
@@ -35,10 +47,10 @@ export async function POST(req: Request) {
       used_at: null,
     });
 
-    return NextResponse.json({ message: "Pin created successfully", pin });
+    return NextResponse.json({ message: "Pin created successfully.", pin });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "Failed to create pin" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to create pin." }, { status: 500 });
   }
 }
 
@@ -48,7 +60,20 @@ export async function GET(req: Request) {
     const userId = searchParams.get("userId");
 
     if (!userId) {
-      return NextResponse.json({ error: "userId is required" }, { status: 400 });
+      return NextResponse.json({ error: "userId is required." }, { status: 400 });
+    }
+
+    const accountExists = await db
+      .select()
+      .from(accounts)
+      .where(eq(accounts.providerAccountId, userId))
+      .limit(1);
+
+    if (accountExists.length === 0) {
+      return NextResponse.json(
+        { error: "User not registered on Skailar." },
+        { status: 404 }
+      );
     }
 
     const userPins = await db
@@ -59,6 +84,6 @@ export async function GET(req: Request) {
     return NextResponse.json(userPins);
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "Failed to fetch pins" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to fetch pins." }, { status: 500 });
   }
 }
