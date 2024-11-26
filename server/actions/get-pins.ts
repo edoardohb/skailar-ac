@@ -9,17 +9,6 @@ export async function getAllPins() {
   return allPins;
 }
 
-export async function getPinByPin(pin: string) {
-  const completePin = await db
-    .select()
-    .from(pins)
-    .where(eq(pins.pin, pin))
-    .limit(1)
-    .then((result) => result[0] || null);
-
-  return completePin;
-}
-
 export async function getPinById(id: string) {
   const pin = await db
     .select()
@@ -29,4 +18,15 @@ export async function getPinById(id: string) {
     .then((result) => result[0] || null);
 
   return pin;
+}
+
+export async function getPinByDiscordId(discordId: string) {
+  const completePin = await db
+    .select()
+    .from(pins)
+    .where(eq(pins.userId, discordId))
+    .limit(1)
+    .then((result) => result[0] || null);
+
+  return completePin;
 }
