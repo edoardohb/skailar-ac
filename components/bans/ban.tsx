@@ -26,6 +26,13 @@ export default function BanComponent({ ban, allBans }: { ban: any, allBans: any 
         return;
       }
 
+      const fiveYearsInMs = 5 * 365 * 24 * 60 * 60 * 1000;
+      if (diff >= fiveYearsInMs) {
+        setTimeLeft("Permanently Banned");
+        clearInterval(interval);
+        return;
+      }
+
       const hours = Math.floor(diff / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
@@ -97,11 +104,12 @@ export default function BanComponent({ ban, allBans }: { ban: any, allBans: any 
               "border border-red-500/50 rounded-lg",
               "transition-all duration-300",
               "transform transition-all duration-1000 delay-1100",
+              "disabled:opacity-50 disabled:cursor-not-allowed",
               mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             )}
-            disabled={!ban?.isAppealable}
+            disabled={!ban?.isAppealable || timeLeft !== "Permanently Banned"}
             onClick={() => {
-              if (ban?.isAppealable) {
+              if (ban?.isAppealable || timeLeft === "Permanently Banned") {
                 const subject = encodeURIComponent("Ban Appeal Request");
                 const body = encodeURIComponent(
                   `Ban ID: ${ban?.id}\nReason: ${ban?.reason}\nExpires: ${ban?.expires_at}\nTotal Bans: ${allBans?.length}\n\nWhy should we unban you:`
