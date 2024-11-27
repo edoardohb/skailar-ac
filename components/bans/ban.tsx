@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Particles from "../magicui/particles";
 
-export default function BanComponent({ ban }: { ban: any }) {
+export default function BanComponent({ ban, allBans }: { ban: any, allBans: any }) {
   const [mounted, setMounted] = useState(false);
   const banExpiration = new Date(ban?.expires_at);
   const [timeLeft, setTimeLeft] = useState<string>("");
@@ -90,14 +90,27 @@ export default function BanComponent({ ban }: { ban: any }) {
             <p className="text-2xl font-mono text-red-400">{timeLeft}</p>
           </div>
 
-          <button className={cn(
-            "group relative px-8 py-3 mt-4",
-            "bg-red-500/10 hover:bg-red-500/20",
-            "border border-red-500/50 rounded-lg",
-            "transition-all duration-300",
-            "transform transition-all duration-1000 delay-1100",
-            mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-          )}>
+          <button
+            className={cn(
+              "group relative px-8 py-3 mt-4",
+              "bg-red-500/10 hover:bg-red-500/20",
+              "border border-red-500/50 rounded-lg",
+              "transition-all duration-300",
+              "transform transition-all duration-1000 delay-1100",
+              mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            )}
+            disabled={!ban?.isAppealable}
+            onClick={() => {
+              if (ban?.isAppealable) {
+                const subject = encodeURIComponent("Ban Appeal Request");
+                const body = encodeURIComponent(
+                  `Ban ID: ${ban?.id}\nReason: ${ban?.reason}\nExpires: ${ban?.expires_at}\nTotal Bans: ${allBans?.length}\n\nWhy should we unban you:`
+                );
+                const mailtoLink = `mailto:support@skailar.ac?subject=${subject}&body=${body}`;
+                window.location.href = mailtoLink;
+              }
+            }}
+          >
             <span className="relative z-10 flex items-center gap-2">
               <ShieldX className="w-4 h-4" />
               Appeal Ban

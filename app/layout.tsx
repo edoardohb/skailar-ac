@@ -2,7 +2,7 @@ import BanComponent from "@/components/bans/ban";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
-import { getBanByUserId } from "@/server/actions/get-bans";
+import { getAllBansByUserId, getBanByUserId } from "@/server/actions/get-bans";
 import { auth } from "@/server/auth";
 import type { Metadata } from "next";
 import { Montserrat } from 'next/font/google';
@@ -25,7 +25,7 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   const ban = await getBanByUserId(session?.user?.id ?? "");
-
+  const allBans = await getAllBansByUserId(session?.user?.id ?? "");
   const isBanned = ban?.expires_at && new Date(ban.expires_at).getTime() > Date.now();
 
   return (
@@ -37,7 +37,7 @@ export default async function RootLayout({
         )}
       >
         {isBanned ? (
-          <BanComponent ban={ban} />
+          <BanComponent ban={ban} allBans={allBans} />
         ) : (
           <>
             <ThemeProvider

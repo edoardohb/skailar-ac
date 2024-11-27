@@ -20,3 +20,12 @@ export async function getBanByUserId(userId: string) {
 
   return ban;
 }
+
+export async function getAllBansByUserId(userId: string) {
+  const allBans = await db
+    .select()
+    .from(bans)
+    .where(eq(bans.userId, userId));
+
+  return allBans;
+}
