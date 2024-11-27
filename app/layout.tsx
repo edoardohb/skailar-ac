@@ -1,6 +1,9 @@
+import BanComponent from "@/components/bans/ban";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
+import { getBanByUserId } from "@/server/actions/get-bans";
+import { auth } from "@/server/auth";
 import type { Metadata } from "next";
 import { Montserrat } from 'next/font/google';
 import "./globals.css";
@@ -15,11 +18,16 @@ export const metadata: Metadata = {
   description: "Revolutionize Cheaters Detection Like Never Before!",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+  const ban = await getBanByUserId(session?.user?.id ?? "");
+
+  const isBanned = ban?.expires_at && new Date(ban.expires_at).getTime() > Date.now();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -28,14 +36,20 @@ export default function RootLayout({
           monserratSans.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster />
-        </ThemeProvider>
+        {isBanned ? (
+          <BanComponent ban={ban} />
+        ) : (
+          <>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              disableTransitionOnChange
+            >
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </>
+        )}
       </body>
     </html>
   );

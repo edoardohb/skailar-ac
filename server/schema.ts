@@ -1,11 +1,10 @@
 import {
   boolean,
   integer,
-  jsonb,
   pgTable,
   primaryKey,
   text,
-  timestamp,
+  timestamp
 } from "drizzle-orm/pg-core";
 
 import type { AdapterAccount } from '@auth/core/adapters';
@@ -113,3 +112,20 @@ export const results = pgTable(
       .default(sql`CURRENT_TIMESTAMP`),
   }
 );
+
+export const bans = pgTable(
+  "ban",
+  {
+    id: text("id").notNull().primaryKey(),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    created_at: timestamp("created_at")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+    expires_at: timestamp("expires_at")
+      .notNull(),
+    reason: text("reason"),
+    isAppealable: boolean("isAppealable").notNull().default(true),
+  }
+)

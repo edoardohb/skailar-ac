@@ -64,6 +64,13 @@
       "when": 1732637786954,
       "tag": "0008_blushing_raider",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1732666411928,
+      "tag": "0009_rich_bloodscream",
+      "breakpoints": true
     }
   ]
 }
