@@ -7,6 +7,7 @@ import { AlignJustify, XIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { UserNavbar } from "./user-navbar";
 
 const menuItem = [
   {
@@ -31,7 +32,7 @@ const menuItem = [
   },
 ];
 
-export function SiteHeader() {
+export function SiteHeader({ session }: { session: any }) {
   const mobilenavbarVariant = {
     initial: {
       opacity: 0,
@@ -126,9 +127,13 @@ export function SiteHeader() {
           </nav>
 
           <div className="ml-auto flex h-full items-center">
-            <Link className={buttonVariants({ variant: "skailar" })} href="/login">
-              Log in
-            </Link>
+            {session ? (
+              <UserNavbar session={session} />
+            ) : (
+              <Link className={buttonVariants({ variant: "skailar" })} href="/login">
+                Log in
+              </Link>
+            )}
           </div>
           <button
             className="ml-6 md:hidden"

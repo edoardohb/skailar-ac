@@ -114,7 +114,7 @@ export default function BanComponent({ ban, allBans }: { ban: any, allBans: any 
                 const body = encodeURIComponent(
                   `Ban ID: ${ban?.id}\nReason: ${ban?.reason}\nExpires: ${ban?.expires_at}\nTotal Bans: ${allBans?.length}\n\nWhy should we unban you:`
                 );
-                const mailtoLink = `mailto:support@skailar.ac?subject=${subject}&body=${body}`;
+                const mailtoLink = `mailto:appeals@skailar.ac?subject=${subject}&body=${body}`;
                 window.location.href = mailtoLink;
               }
             }}
