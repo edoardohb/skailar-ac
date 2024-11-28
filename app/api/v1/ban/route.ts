@@ -2,6 +2,7 @@ import { db } from "@/server";
 import { getUserByAccountId } from "@/server/actions/get-users";
 import { bans } from "@/server/schema";
 import crypto from "crypto";
+import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -41,5 +42,35 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error("Failed ban user:", error);
     return NextResponse.json({ error: "Failed to ban user." }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const body = await req.json();
+    const { banId } = body;
+
+    if (!banId) {
+      return NextResponse.json({ error: "banId is required." }, { status: 400 });
+    }
+
+    const banExists = await db
+      .select()
+      .from(bans)
+      .where(eq(bans.id, banId))
+      .limit(1);
+
+    if (banExists.length === 0) {
+      return NextResponse.json({ error: "Ban not found." }, { status: 404 });
+    }
+
+    await db
+      .delete(bans)
+      .where(eq(bans.id, banId));
+
+    return NextResponse.json({ message: "Ban successfully deleted." });
+  } catch (error) {
+    console.error("Failed to delete ban:", error);
+    return NextResponse.json({ error: "Failed to delete ban." }, { status: 500 });
   }
 }

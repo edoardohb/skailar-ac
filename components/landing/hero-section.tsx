@@ -7,9 +7,9 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import AnimatedGradientText from "../magicui/animated-gradient-text";
-import GridPattern from "../magicui/grid-pattern";
 import SparklesText from "../magicui/sparkles-text";
 import Image from "next/image";
+import RetroGrid from "../magicui/retro-grid";
 
 export default function HeroSection() {
   const ref = useRef(null);
@@ -17,16 +17,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <GridPattern
-        width={50}
-        height={50}
-        x={30}
-        y={30}
-        className={cn(
-          "[mask-image:radial-gradient(100%_100%_at_top_center,grey,transparent)]",
-        )}
-      />
-
+      <RetroGrid className="z-0" />
       <section
         id="hero"
         className="relative mx-auto mt-32 max-w-[80rem] px-6 text-center md:px-8"
