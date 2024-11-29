@@ -48,7 +48,7 @@ export default function TermsPage() {
                 By using our Services, you consent to the collection, storage, and processing of data
                 as outlined in our{' '}
                 <Link
-                  href="/privacy-policy"
+                  href="/privacy"
                   className={buttonVariants({
                     variant: "footer_link",
                     className: 'underline !text-[16px]'
@@ -94,7 +94,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-3xl font-bold text-white mb-4">Contact Information</h2>
               <p>
-                For questions or concerns regarding these Terms, please contact us at <Link href="mailto:support@skailar.com" className={buttonVariants({ variant: "footer_link", class: 'underline !text-[16px]' })}>support@skailar.com</Link>.
+                For questions or concerns regarding these Terms, please contact us at <Link href="mailto:support@skailar.ac" className={buttonVariants({ variant: "footer_link", class: 'underline !text-[16px]' })}>support@skailar.ac</Link>.
               </p>
             </section>
           </article>

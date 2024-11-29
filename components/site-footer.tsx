@@ -25,6 +25,18 @@ const footerNavs = [
         href: "/terms",
         name: "Terms",
       },
+      {
+        href: "/privacy",
+        name: "Privacy",
+      },
+      {
+        href: "/cookies",
+        name: "Cookies",
+      },
+      {
+        href: "/refund",
+        name: "Refund",
+      },
     ],
   },
 ];
