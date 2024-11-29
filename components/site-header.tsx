@@ -32,7 +32,7 @@ const menuItem = [
   },
 ];
 
-export function SiteHeader({ session }: { session: any }) {
+export function SiteHeader({ session, user }: { session: any, user: any }) {
   const mobilenavbarVariant = {
     initial: {
       opacity: 0,
@@ -99,7 +99,7 @@ export function SiteHeader({ session }: { session: any }) {
 
   return (
     <>
-      <header className="fixed h-20 left-0 top-0 z-50 w-full translate-y-[-1rem] animate-fade-in border-b opacity-0 backdrop-blur-[12px] [--animation-delay:600ms]">
+      <header className="fixed bg-black h-20 left-0 top-0 z-50 w-full translate-y-[-1rem] animate-fade-in border-b opacity-0 backdrop-blur-[12px] [--animation-delay:600ms]">
         <div className="container flex h-[5rem] items-center justify-between">
           <Link className="text-md flex items-center" href="/">
             <Image
@@ -128,7 +128,7 @@ export function SiteHeader({ session }: { session: any }) {
 
           <div className="ml-auto flex h-full items-center">
             {session ? (
-              <UserNavbar session={session} />
+              <UserNavbar session={session} user={user} />
             ) : (
               <Link className={buttonVariants({ variant: "skailar" })} href="/login">
                 Log in

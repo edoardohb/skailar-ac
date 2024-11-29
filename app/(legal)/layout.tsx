@@ -1,7 +1,7 @@
 import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
 import { getAccountByUserId } from "@/server/actions/get-accounts";
 import { auth } from "@/server/auth";
+import { SiteHeader } from "./_components/site-header";
 
 interface MarketingLayoutProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ export default async function MarketingLayout({
   return (
     <>
       <SiteHeader session={session} user={user} />
-      <main className="mx-auto flex-1 overflow-hidden">{children}</main>
+      <main className="flex-1">{children}</main>
       <SiteFooter />
     </>
   );

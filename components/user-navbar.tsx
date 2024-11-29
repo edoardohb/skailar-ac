@@ -1,7 +1,6 @@
 import {
   Cloud,
   CreditCard,
-  Keyboard,
   LifeBuoy,
   LogOut,
   User
@@ -19,14 +18,14 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
-import { DashboardIcon } from "@radix-ui/react-icons"
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { logoutAction } from "@/server/actions/logout"
+import { DashboardIcon } from "@radix-ui/react-icons"
 import { useEffect } from "react"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 
-export const UserNavbar = ({ session }: { session: any }) => {
+export const UserNavbar = ({ session, user }: { session: any, user: any }) => {
   const data = [
-    { id: 1, label: "Profile", icon: User, shortcut: "⌘P", href: "/profile" },
+    { id: 1, label: "Profile", icon: User, shortcut: "⌘P", href: `https://discord.com/users/${user?.providerAccountId}` },
     { id: 2, label: "Dashboard", icon: DashboardIcon, shortcut: "⌘D", href: "/dashboard" },
     { id: 3, label: "Billing", icon: CreditCard, shortcut: "⌘B", href: "/billing" },
   ]

@@ -35,7 +35,7 @@ export async function getUserByAccountId(accountId: string) {
   const userId = await db
     .select({ userId: accounts.userId })
     .from(accounts)
-    .where(eq(accounts.providerAccountId, accountId))
+    .where(eq(accounts.userId, accountId))
     .limit(1)
     .then((result) => result[0]?.userId || null);
 
