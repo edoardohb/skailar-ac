@@ -129,3 +129,17 @@ export const bans = pgTable(
     isAppealable: boolean("isAppealable").notNull().default(true),
   }
 )
+
+export const subscriptions = pgTable(
+  "subscription",
+  {
+    id: text("id").notNull().primaryKey(),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    plan: text("plan").notNull(),
+    status: text("status").notNull(),
+    startDate: timestamp("startDate", { mode: "date" }).notNull(),
+    endDate: timestamp("endDate", { mode: "date" }),
+  }
+)

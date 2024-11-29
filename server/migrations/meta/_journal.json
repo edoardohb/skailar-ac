@@ -71,6 +71,41 @@
       "when": 1732666411928,
       "tag": "0009_rich_bloodscream",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1732917910472,
+      "tag": "0010_dear_the_hand",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1732918074388,
+      "tag": "0011_mysterious_tarantula",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1732918678056,
+      "tag": "0012_flashy_randall_flagg",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1732918786209,
+      "tag": "0013_curly_miracleman",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "5",
+      "when": 1732918805880,
+      "tag": "0014_goofy_lifeguard",
+      "breakpoints": true
     }
   ]
 }
