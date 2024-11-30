@@ -22,7 +22,7 @@ export const UploadedFiles = ({
   const router = useRouter()
 
   const handleDelete = async (id: string) => {
-    const response = await fetch(`/api/v1/exe`, {
+    const response = await fetch(`/api/v1/upload-exe`, {
       method: "DELETE",
       body: JSON.stringify({ id }),
     })

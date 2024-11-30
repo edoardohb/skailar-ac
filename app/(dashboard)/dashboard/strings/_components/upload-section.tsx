@@ -39,7 +39,7 @@ export const UploadSection = ({ userId }: { userId: string }) => {
     setUploadSuccess(null)
 
     try {
-      const response = await fetch("/api/v1/exe", {
+      const response = await fetch("/api/v1/upload-exe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
