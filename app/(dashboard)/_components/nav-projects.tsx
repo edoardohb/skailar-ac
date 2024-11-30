@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
+import Link from "next/link"
 
 export function NavProjects({
   others,
@@ -32,10 +33,10 @@ export function NavProjects({
         {others.map((item) => (
           <SidebarMenuItem className={cn(item.url === pathname && "bg-sidebar-accent rounded-md text-skailar")} key={item.name}>
             <SidebarMenuButton asChild tooltip={item.name}>
-              <a href={item.url}>
+              <Link href={item.url}>
                 {item.icon && <item.icon />}
                 <span>{item.name}</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
