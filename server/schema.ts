@@ -155,3 +155,15 @@ export const exeFiles = pgTable(
     clientName: text("clientName").notNull(),
   }
 )
+
+export const newsletter = pgTable(
+  "newsletter",
+  {
+    id: text("id").notNull().primaryKey(),
+    ip: text("ip").notNull(),
+    email: text("email").notNull(),
+    created_at: timestamp("created_at")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  }
+)
