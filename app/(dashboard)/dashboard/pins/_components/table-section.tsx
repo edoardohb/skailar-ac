@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Link1Icon } from "@radix-ui/react-icons"
+import { CheckCircleIcon, XCircleIcon } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -106,21 +107,32 @@ export const TableSection = ({ filteredPins }: TableSectionClientProps) => {
                 <TableCell className="py-3 px-4 text-sm text-muted-foreground">{pin.pin}</TableCell>
                 <TableCell className="py-3 px-4 text-sm text-muted-foreground">
                   {pin.isUsed ? (
-                    <span className="text-green-500 font-medium">Yes</span>
+                    <span className="inline-flex items-center gap-1 px-2 py-1 text-sm font-medium text-green-500 bg-green-500/15 rounded-md">
+                      <CheckCircleIcon className="w-4 h-4" />
+                      Yes
+                    </span>
                   ) : (
-                    <span className="text-red-500 font-medium">No</span>
+                    <span className="inline-flex items-center gap-1 px-2 py-1 text-sm font-medium text-red-500 bg-red-500/15 rounded-md">
+                      <XCircleIcon className="w-4 h-4" />
+                      No
+                    </span>
                   )}
                 </TableCell>
                 <TableCell className="py-3 px-4 text-sm text-muted-foreground">
-                  <Link href={`${pin.link}`} target="_blank">
-                    <Link1Icon className="h-4 w-4 text-skailar hover:text-purple-700 transition duration-200" />
+                  <Link href={`${pin.link}`} target="_blank" className="flex items-center gap-2 text-skailar hover:text-purple-800 transition">
+                    <Link1Icon className="h-4 w-4" />
+                    View Result
                   </Link>
                 </TableCell>
                 <TableCell className="py-3 px-4 text-sm text-muted-foreground">
-                  <p>{pin.used_at ? pin.used_at.toLocaleString() : 'None'}</p>
+                  {pin.used_at ? new Date(pin.used_at).toLocaleString() : "None"}
                 </TableCell>
                 <TableCell className="py-3 px-4">
-                  <Link href={`https://dl.skailar.com/${pin.pin}`} className="text-purple hover:text-purple/80 transition duration-200" target="_blank">
+                  <Link
+                    href={`https://dl.skailar.com/${pin.pin}`}
+                    className="text-skailar hover:text-purple-800 transition"
+                    target="_blank"
+                  >
                     Download Here
                   </Link>
                 </TableCell>
