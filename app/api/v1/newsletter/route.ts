@@ -23,9 +23,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const existingEmail = await db.query.newsletter.findFirst({
-      where: eq(newsletter.email, email),
-    });
+    const existingEmail = await db
+      .select()
+      .from(newsletter)
+      .where(eq(newsletter.email, email))
+      .limit(1)
+      .then((result) => result[0] || null);
 
     if (existingEmail) {
       return NextResponse.json(
@@ -33,10 +36,13 @@ export async function POST(req: NextRequest) {
         { status: 200 }
       );
     }
-
-    const alreadySubscribed = await db.query.newsletter.findFirst({
-      where: eq(newsletter.ip, ip),
-    });
+  
+    const alreadySubscribed = await db
+      .select()
+      .from(newsletter)
+      .where(eq(newsletter.ip, ip))
+      .limit(1)
+      .then((result) => result[0] || null);
 
     if (alreadySubscribed) {
       return NextResponse.json(
