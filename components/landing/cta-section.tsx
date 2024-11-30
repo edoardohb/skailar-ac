@@ -1,6 +1,6 @@
 import { TextHoverEffect } from "../aceternity/text-hover-effect";
 import Particles from "../magicui/particles";
-import { buttonVariants } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 
 export const CTASection = () => {
   return (
@@ -13,7 +13,7 @@ export const CTASection = () => {
             <form className="ml-auto mr-auto mt-[2.5rem] flex max-w-md gap-4">
               <label htmlFor="email-address" className="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0">Email address</label>
               <input id="email-address" name="email" type="email" required placeholder="Enter your email" autoComplete="off" className="min-w-0 flex-1 rounded-sm border-0 bg-white/5 pl-3.5 pr-3.5 pt-2 pb-2 text-white shadow-sm ring-1 focus:ring-skailar ring-inset ring-skailar/10 text-sm leading-6" />
-              <button type="submit" className={buttonVariants({ variant: "skailar", size: "md" })}>Notify me</button>
+              <Button type="submit" className={buttonVariants({ variant: "skailar", size: "md" })}>Notify me</Button>
             </form>
 
             <svg viewBox="0 0 1024 1024" aria-hidden="true" className="absolute shadow-lg top-[50%] -z-10 w-[64rem] h-[64rem]">
