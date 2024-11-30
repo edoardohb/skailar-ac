@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     if (existingEmail) {
       return NextResponse.json(
         { success: true, message: "Email already exists in newsletter." },
-        { status: 200 }
+        { status: 400 }
       );
     }
   
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
     if (alreadySubscribed) {
       return NextResponse.json(
         { success: true, message: "Email already exists in newsletter." },
-        { status: 200 }
+        { status: 400 }
       );
     }
 

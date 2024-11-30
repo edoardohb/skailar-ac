@@ -19,8 +19,9 @@ export const CTASection = () => {
         },
         body: JSON.stringify({ email }),
       });
+
       if (!response.ok) {
-        throw new Error("Failed to subscribe");
+        toast.error("Failed to subscribe.");
       }
 
       toast.success("Email added to newsletter successfully.");
