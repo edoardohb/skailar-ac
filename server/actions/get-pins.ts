@@ -30,3 +30,14 @@ export async function getPinByDiscordId(discordId: string) {
 
   return completePin;
 }
+
+export async function getPinByPinId(pinId: string) {
+  const pin = await db
+    .select()
+    .from(pins)
+    .where(eq(pins.pin, pinId))
+    .limit(1)
+    .then((result) => result[0] || null);
+
+  return pin;
+}
