@@ -113,7 +113,7 @@ export const TableSection = ({ filteredPins }: TableSectionClientProps) => {
                 </TableCell>
                 <TableCell className="py-3 px-4 text-sm text-muted-foreground">
                   <Link href={`${pin.link}`} target="_blank">
-                    <Link1Icon className="h-4 w-4 text-[rgb(150,29,225)] hover:text-purple-700 transition duration-200" />
+                    <Link1Icon className="h-4 w-4 text-skailar hover:text-purple-700 transition duration-200" />
                   </Link>
                 </TableCell>
                 <TableCell className="py-3 px-4 text-sm text-muted-foreground">

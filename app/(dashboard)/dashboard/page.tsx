@@ -11,9 +11,12 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { getAllPins } from "@/server/actions/get-pins";
 import { getAllSubscriptions } from "@/server/actions/get-subscriptions";
 import { getAllUsers } from "@/server/actions/get-users";
+import { auth } from "@/server/auth";
 import { CheckCircle2, CreditCard, Pin, Users } from "lucide-react";
+import { ShowUser } from "../_components/show-user";
 
 export default async function DashboardPage() {
+  const session = await auth();
   const pins = await getAllPins();
   const subscriptions = await getAllSubscriptions();
   const users = await getAllUsers();
@@ -43,7 +46,7 @@ export default async function DashboardPage() {
 
   return (
     <>
-      <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+      <header className="flex h-16 shrink-0 items-center justify-between gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
         <div className="flex items-center gap-2 px-4">
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
@@ -58,6 +61,9 @@ export default async function DashboardPage() {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
+        </div>
+        <div className="pr-4">
+          <ShowUser id={session?.user?.id ?? ""} />
         </div>
       </header>
 

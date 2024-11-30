@@ -16,7 +16,7 @@ const config = {
   prefix: "",
   theme: {
   	container: {
-  		center: 'true',
+  		center: true,
   		padding: '2rem',
   		screens: {
   			'2xl': '1400px'
@@ -29,6 +29,7 @@ const config = {
   		colors: {
   			skailar: 'hsl(277, 77%, 50%)',
   			discord: 'hsl(227, 58%, 65%)',
+				danger: 'hsl(357, 77%, 50%)',
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',

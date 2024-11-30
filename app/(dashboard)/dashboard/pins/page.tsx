@@ -16,6 +16,7 @@ import { TableSectionServer } from "./_components/table-section-server";
 import { GeneratePin } from "./_components/generate-pin";
 import { HaveIssue } from "./_components/have-issue";
 import { getAccountByUserId } from "@/server/actions/get-accounts";
+import { ShowUser } from "../../_components/show-user";
 
 export default async function PinsPage() {
   const pins = await getAllPins();
@@ -30,7 +31,7 @@ export default async function PinsPage() {
   ]
   return (
     <>
-      <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+      <header className="flex h-16 shrink-0 items-center justify-between gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
         <div className="flex items-center gap-2 px-4">
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
@@ -49,6 +50,9 @@ export default async function PinsPage() {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
+        </div>
+        <div className="pr-4">
+          <ShowUser id={session?.user?.id ?? ""} />
         </div>
       </header>
 

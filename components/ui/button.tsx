@@ -22,6 +22,7 @@ const buttonVariants = cva(
         footer_link: "text-skailar underline-offset-4 hover:underline !px-0 !text-lg",
         skailar: "gap-x-1.5 rounded-lg bg-skailar/15 px-4 py-[0.35rem] text-[15px] font-bold text-skailar outline-none transition-colors duration-300 hover:bg-skailar/25",
         discord: "gap-x-1.5 rounded-lg bg-discord/15 px-4 py-[0.35rem] text-[15px] font-bold text-discord outline-none transition-colors duration-300 hover:bg-discord/25",
+        danger: "gap-x-1.5 rounded-lg bg-danger/15 px-4 py-[0.35rem] text-[15px] font-bold text-danger outline-none transition-colors duration-300 hover:bg-danger/25",
       },
       size: {
         default: "h-9 px-4 py-2",

@@ -55,7 +55,7 @@ export const GeneratePin = ({ userId, discordId }: { userId: string, discordId: 
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <span className="flex items-center justify-center bg-[rgba(150,29,225,.15)] rounded-md p-2">
-            <Rocket className="h-5 w-5 text-[rgb(150,29,225)]" />
+            <Rocket className="h-5 w-5 text-skailar" />
           </span>
           Generate Pin
         </CardTitle>
