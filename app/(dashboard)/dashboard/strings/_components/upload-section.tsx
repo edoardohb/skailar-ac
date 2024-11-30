@@ -54,6 +54,8 @@ export const UploadSection = ({ userId }: { userId: string }) => {
       if (response.ok) {
         setUploadSuccess(true)
         toast.success("File uploaded successfully!")
+        setUploadedFileName(null)
+        setClientName("")
       } else {
         setUploadSuccess(false)
         const error = await response.json()
