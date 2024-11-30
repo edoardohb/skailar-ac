@@ -1,8 +1,35 @@
+"use client"
+import { useState } from "react";
 import { TextHoverEffect } from "../aceternity/text-hover-effect";
 import Particles from "../magicui/particles";
 import { Button, buttonVariants } from "../ui/button";
+import { Input } from "../ui/input";
+import { toast } from "sonner";
 
 export const CTASection = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/v1/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to subscribe");
+      }
+
+      toast.success("Email added to newsletter successfully.");
+      setEmail("");
+    } catch (error) {
+      toast.error("Failed to subscribe.");
+    }
+  };
+
   return (
     <>
       <div className="bg-black pt-[4rem] pb-[4rem] md:pt-[8rem] md:pb-[8rem]">
@@ -10,9 +37,19 @@ export const CTASection = () => {
           <div className="relative isolate overflow-hidden bg-opacity-100 border border-white/15 py-24 px-[1.5rem] shadow-lg shadow-black/25 ring-0 ring-offset-0 rounded-2xl">
             <h2 className="text-5xl md:text-6xl max-w-2xl mx-auto tracking-tighter text-center font-medium">Stay Updated on Our Launch</h2>
             <p className="text-center text-lg md:text-xl max-w-lg mx-auto text-white/70 px-4 mt-5 tracking-tight">Sign up to receive the latest news and updates about our upcoming launch.</p>
-            <form className="ml-auto mr-auto mt-[2.5rem] flex max-w-md gap-4">
+            <form onSubmit={handleSubmit} className="ml-auto mr-auto mt-[2.5rem] flex max-w-md gap-4">
               <label htmlFor="email-address" className="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0">Email address</label>
-              <input id="email-address" name="email" type="email" required placeholder="Enter your email" autoComplete="off" className="min-w-0 flex-1 rounded-sm border-0 bg-white/5 pl-3.5 pr-3.5 pt-2 pb-2 text-white shadow-sm ring-1 focus:ring-skailar ring-inset ring-skailar/10 text-sm leading-6" />
+              <Input
+                id="email-address"
+                name="email"
+                type="email"
+                required
+                placeholder="Enter your email"
+                autoComplete="off"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="min-w-0 flex-1 rounded-sm border-0 bg-white/5 pl-3.5 pr-3.5 pt-2 pb-2 text-white shadow-sm ring-1 focus:ring-skailar ring-inset ring-skailar/10 text-sm leading-6"
+              />
               <Button type="submit" className={buttonVariants({ variant: "skailar", size: "md" })}>Notify me</Button>
             </form>
 
@@ -40,5 +77,5 @@ export const CTASection = () => {
 
       <TextHoverEffect text="SKAILAR" />
     </>
-  )
+  );
 };

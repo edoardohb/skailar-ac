@@ -161,7 +161,7 @@ export const newsletter = pgTable(
   {
     id: text("id").notNull().primaryKey(),
     ip: text("ip").notNull(),
-    email: text("email").notNull(),
+    email: text("email").notNull().unique(),
     created_at: timestamp("created_at")
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
