@@ -37,7 +37,7 @@ export const AddString = () => {
             <Plus className="h-4 w-4" />
             Add String
           </Button>
-          <Button variant="danger">
+          <Button variant="danger" size='icon' >
             <X className="h-4 w-4" />
           </Button>
         </div>

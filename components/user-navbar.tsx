@@ -68,12 +68,14 @@ export const UserNavbar = ({ session, user }: { session: any, user: any }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Avatar>
-          <AvatarImage src={session?.user?.image} />
-          <AvatarFallback>
-            {session?.user?.name?.charAt(0).toUpperCase()}
-          </AvatarFallback>
-        </Avatar>
+        <div>
+          <Avatar>
+            <AvatarImage src={session?.user?.image} />
+            <AvatarFallback>
+              {session?.user?.name?.charAt(0).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 import { v4 as uuidv4 } from "uuid"
 import { db } from "@/server"
 import { exeFiles } from "@/server/schema"
+import { eq } from "drizzle-orm"
 
 export async function POST(req: Request) {
   try {
@@ -31,4 +32,14 @@ export async function POST(req: Request) {
       { status: 500 }
     )
   }
+}
+
+export async function DELETE(req: Request) {
+  const body = await req.json()
+
+  const { id } = body
+
+  await db.delete(exeFiles).where(eq(exeFiles.id, id))
+
+  return NextResponse.json({ success: true, message: "File deleted successfully." })
 }

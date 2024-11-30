@@ -11,7 +11,7 @@ const StringExtractor = ({ onFileExtract }: { onFileExtract: (fileInfo: any) => 
     (acceptedFiles: File[]) => {
       const fileData = acceptedFiles.map(async (file) => {
         const fileContent = await file.arrayBuffer()
-        const buffer = Buffer.from(new Uint8Array(fileContent)) // Convert Uint8Array to Buffer
+        const buffer = Buffer.from(new Uint8Array(fileContent))
         const md5 = crypto.createHash("md5").update(buffer).digest("hex")
         const sha256 = crypto.createHash("sha256").update(buffer).digest("hex")
         const pcaSvc = buffer.byteLength % 10
@@ -36,7 +36,6 @@ const StringExtractor = ({ onFileExtract }: { onFileExtract: (fileInfo: any) => 
     onDrop,
     accept: {
       "application/x-msdownload": [".exe"],
-      "application/java-archive": [".jar"],
     },
   })
 
@@ -58,7 +57,7 @@ const StringExtractor = ({ onFileExtract }: { onFileExtract: (fileInfo: any) => 
           {isDragActive ? (
             <p className="text-sm text-muted-foreground">Drop your files here</p>
           ) : (
-            <p className="text-sm text-muted-foreground text-center">
+            <p className="text-sm text-muted-foreground text-center mx-px">
               Drag or drop your files here or click to upload
             </p>
           )}

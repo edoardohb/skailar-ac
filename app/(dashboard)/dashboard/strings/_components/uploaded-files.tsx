@@ -1,9 +1,13 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Trash } from "lucide-react"
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Trash } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export const UploadedFiles = ({
   exes
@@ -15,6 +19,22 @@ export const UploadedFiles = ({
     clientName: string;
   }[]
 }) => {
+  const router = useRouter()
+
+  const handleDelete = async (id: string) => {
+    const response = await fetch(`/api/v1/exe`, {
+      method: "DELETE",
+      body: JSON.stringify({ id }),
+    })
+
+    if (response.ok) {
+      toast.success("File deleted successfully!")
+      return router.refresh()
+    }
+
+    toast.error("An unexpected error occurred. Please try again.")
+  }
+
   return (
     <Card className="bg-muted/50">
       <CardHeader>
@@ -59,7 +79,7 @@ export const UploadedFiles = ({
                   {exe?.clientName}
                 </TableCell>
                 <TableCell className="w-24">
-                  <Button variant="danger" size="icon">
+                  <Button onClick={() => handleDelete(exe?.id)} variant="danger" size="icon">
                     <Trash className="h-4 w-4" />
                   </Button>
                 </TableCell>

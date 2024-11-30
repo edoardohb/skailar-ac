@@ -1,7 +1,7 @@
 export const ShowUser = ({ id }: { id: string }) => {
   return (
     <p className="text-sm text-muted-foreground">
-      {id}
+      User ID - {id}
     </p>
   )
 }

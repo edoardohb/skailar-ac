@@ -11,10 +11,12 @@ export const GeneratePin = ({ userId, discordId }: { userId: string, discordId: 
   const [pin, setPin] = useState<string | null>(null);
   const [link, setLink] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState<boolean>(false);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
   const router = useRouter()
 
   const handleGeneratePin = async () => {
+    setIsDisabled(true)
     try {
       const res = await fetch("/api/v1/pin", {
         method: "POST",
@@ -36,6 +38,8 @@ export const GeneratePin = ({ userId, discordId }: { userId: string, discordId: 
       router.refresh();
     } catch (error) {
       console.error("Error generating pin:", error);
+    } finally {
+      setIsDisabled(false)
     }
   };
 
@@ -61,7 +65,7 @@ export const GeneratePin = ({ userId, discordId }: { userId: string, discordId: 
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-xs text-muted-foreground">
+        <p className=" text-muted-foreground">
           Generate the FiveM pin to use it in your scan
         </p>
         <div className="flex items-center gap-2">
@@ -74,7 +78,7 @@ export const GeneratePin = ({ userId, discordId }: { userId: string, discordId: 
             {isCopied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
           </Button>
         </div>
-        <Button disabled={isCopied || !!pin} variant="skailar" className="w-full" onClick={handleGeneratePin}>
+        <Button disabled={isCopied || isDisabled} variant="skailar" className="w-full" onClick={handleGeneratePin}>
           Generate Pin
         </Button>
       </CardContent>

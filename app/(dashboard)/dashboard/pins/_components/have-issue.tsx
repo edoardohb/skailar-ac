@@ -16,7 +16,7 @@ export const HaveIssue = () => {
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground">
-          Have any issue? Join Discord.
+          Have any issue? Join our Community Server.
         </p>
         <Button variant="discord" className="w-full" asChild>
           <Link href='https://discord.gg/skailar' target="_blank">

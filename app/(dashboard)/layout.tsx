@@ -16,9 +16,14 @@ export default async function MarketingLayout({
   const user = await getAccountByUserId(session?.user?.id ?? '');
   const subscription = await getSubscriptionByUserId(session?.user?.id ?? '');
 
-  if (!session || !user || subscription?.plan === 'Free Plan') {
-    return redirect('/login');
+  if (!session || !user) {
+    return redirect('/');
   }
+
+  // if (!subscription) {
+  //   toast.error("You need to subscribe to a plan to use this feature.")
+  //   return redirect('/')
+  // }
 
   return (
     <SidebarProvider>
