@@ -8,23 +8,24 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { auth } from "@/server/auth";
+import { ShowUser } from "../../_components/show-user";
 import { AddString } from "./_components/add-string";
 import { CustomSuspiciousEditor } from "./_components/custom-suspicious-editor";
 import { Detections } from "./_components/detections";
 import { ExeUploader } from "./_components/exe-uploader";
 import { ProcessList } from "./_components/process-list";
 import { StringExport } from "./_components/string-export";
-import { StringExtracted } from "./_components/string-extracted";
-import { StringExtractor } from "./_components/string-extractor";
 import { StringImport } from "./_components/string-import";
 import { StringList } from "./_components/string-list";
 import { UploadSection } from "./_components/upload-section";
 import { UploadedFiles } from "./_components/uploaded-files";
-import { ShowUser } from "../../_components/show-user";
-import { auth } from "@/server/auth";
+import { FileProcessor } from "./_components/string-extractor";
+import { getExeByUserId } from "@/server/actions/get-exe";
 
 export default async function StringsPage() {
   const session = await auth();
+  const exes = await getExeByUserId(session?.user?.id ?? "");
 
   return (
     <>
@@ -55,13 +56,11 @@ export default async function StringsPage() {
 
       <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
         <div className="grid gap-6 md:grid-cols-3">
-          <StringExtractor />
-          <StringExtracted />
+          <FileProcessor />
           <Detections />
         </div>
-
-        <UploadSection />
-        <UploadedFiles />
+        <UploadSection userId={session?.user?.id ?? ""} />
+        <UploadedFiles exes={exes} />
 
         <div className="grid gap-6 md:grid-cols-2">
           <ProcessList />

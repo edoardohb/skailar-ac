@@ -143,3 +143,15 @@ export const subscriptions = pgTable(
     endDate: timestamp("endDate", { mode: "date" }),
   }
 )
+
+export const exeFiles = pgTable(
+  "exeFile",
+  {
+    id: text("id").notNull().primaryKey(),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    name: text("name").notNull(),
+    clientName: text("clientName").notNull(),
+  }
+)

@@ -3,8 +3,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Trash } from "lucide-react"
 
-export const UploadedFiles = () => {
+export const UploadedFiles = ({
+  exes
+}: {
+  exes: {
+    id: string;
+    name: string;
+    userId: string;
+    clientName: string;
+  }[]
+}) => {
   return (
     <Card className="bg-muted/50">
       <CardHeader>
@@ -40,16 +50,26 @@ export const UploadedFiles = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell colSpan={3} className="text-center text-muted-foreground">
-                No data available in table
-              </TableCell>
-            </TableRow>
+            {exes.map((exe: any) => (
+              <TableRow key={exe?.id}>
+                <TableCell className="text-muted-foreground">
+                  {exe?.name}
+                </TableCell>
+                <TableCell className="text-muted-foreground">
+                  {exe?.clientName}
+                </TableCell>
+                <TableCell className="w-24">
+                  <Button variant="danger" size="icon">
+                    <Trash className="h-4 w-4" />
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
         <div className="flex items-center justify-between mt-4">
           <div className="text-sm text-muted-foreground">
-            Showing 0 to 0 of 0 entries
+            Showing 0 to 0 of {exes?.length} entries
           </div>
           <div className="flex gap-2">
             <Button variant="outline" disabled>
