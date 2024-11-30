@@ -64,7 +64,7 @@ export default function TermsPage() {
               <h2 className="text-3xl font-bold text-white mb-4">Prohibited Activities</h2>
               <p>You agree not to engage in any of the following activities:</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Attempting to bypass, disable, or interfere with Skailar’s anti-cheat mechanisms.</li>
+                <li>Attempting to bypass, disable, or interfere with Skailar&apos;s anti-cheat mechanisms.</li>
                 <li>Reverse engineering, decompiling, or otherwise analyzing the Services.</li>
                 <li>Using the Services in ways that violate applicable laws or regulations.</li>
               </ul>
@@ -73,7 +73,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-3xl font-bold text-white mb-4">Limitation of Liability</h2>
               <p>
-                Skailar is provided "as-is" without any warranties of any kind, express or implied. We are not liable for any indirect, incidental, or consequential damages arising from your use of the Services.
+                Skailar is provided &quot;as-is&quot; without any warranties of any kind, express or implied. We are not liable for any indirect, incidental, or consequential damages arising from your use of the Services.
               </p>
             </section>
 
