@@ -127,7 +127,7 @@ export function SiteHeader({ session, user }: { session: any, user: any }) {
           </nav>
 
           <div className="ml-auto flex h-full items-center">
-            {session ? (
+            {session?.user ? (
               <UserNavbar session={session} user={user} />
             ) : (
               <Link className={buttonVariants({ variant: "skailar" })} href="/login">
