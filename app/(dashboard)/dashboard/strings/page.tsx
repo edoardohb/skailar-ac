@@ -8,20 +8,19 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { getExeByUserId } from "@/server/actions/get-exe";
 import { auth } from "@/server/auth";
 import { ShowUser } from "../../_components/show-user";
 import { AddString } from "./_components/add-string";
 import { CustomSuspiciousEditor } from "./_components/custom-suspicious-editor";
 import { Detections } from "./_components/detections";
-import { ExeUploader } from "./_components/exe-uploader";
 import { ProcessList } from "./_components/process-list";
 import { StringExport } from "./_components/string-export";
+import { FileProcessor } from "./_components/string-extractor";
 import { StringImport } from "./_components/string-import";
 import { StringList } from "./_components/string-list";
 import { UploadSection } from "./_components/upload-section";
 import { UploadedFiles } from "./_components/uploaded-files";
-import { FileProcessor } from "./_components/string-extractor";
-import { getExeByUserId } from "@/server/actions/get-exe";
 
 export default async function StringsPage() {
   const session = await auth();
@@ -74,9 +73,8 @@ export default async function StringsPage() {
           <StringExport />
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="gap-6">
           <CustomSuspiciousEditor />
-          <ExeUploader />
         </div>
       </div>
     </>
